@@ -1,6 +1,13 @@
+"use client";
 import Link from "next/link";
 
+import Video from "../Video";
+import Image from "next/image";
+import { useState } from "react";
+import ModalVideo from "react-modal-video";
+
 const Hero = () => {
+  const [isOpen, setOpen] = useState(false);
   return (
     <>
       <section
@@ -8,40 +15,51 @@ const Hero = () => {
         className="relative z-10 overflow-hidden pt-[120px] pb-16 md:pt-[150px] md:pb-[120px] xl:pt-[180px] xl:pb-[160px] 2xl:pt-[210px] 2xl:pb-[200px]"
       >
         <div className="container">
-          <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4">
+          <div className="-mx-4 flex flex-row gap-x-10">
+            <div className="w-1/2 px-4">
               <div
-                className="wow fadeInUp mx-auto max-w-[800px] text-center"
+                className="wow fadeInUp mx-auto max-w-[800px] "
                 data-wow-delay=".2s"
               >
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                Welcome to the World of Unforgettable Events
+                  Welcome to the World of Unforgettable Events
                 </h1>
                 <p className="mb-12 text-base font-medium !leading-relaxed text-body-color dark:text-white dark:opacity-90 sm:text-lg md:text-xl">
-                At WhiteCollar, we specialize in turning your visions into reality.
-          Our passion is to create exceptional events that leave lasting impressions, and our expertise
-          is your guarantee of a flawless celebration. Whether you're planning a grand wedding, a corporate conference, a milestone birthday, or any
-          other special occasion, we're here to transform your ideas into extraordinary moments.
+                  At WhiteCollar, we specialize in turning your visions into
+                  reality. Our passion is to create exceptional events that
+                  leave lasting impressions, and our expertise is your guarantee
+                  of a flawless celebration. Whether you're planning a grand
+                  wedding, a corporate conference, a milestone birthday, or any
+                  other special occasion, we're here to transform your ideas
+                  into extraordinary moments.
                 </p>
-                
-                {/* <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <Link
-                    href="https://nextjstemplates.com/templates/saas-starter-startup"
-                    className="rounded-md bg-primary py-4 px-8 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
-                  >
-                   🔥 Get Pro
-                  </Link>
-                  <Link
-                    href="https://github.com/NextJSTemplates/startup-nextjs"
-                    className="rounded-md bg-black/20 py-4 px-8 text-base font-semibold text-black duration-300 ease-in-out hover:bg-black/30 dark:bg-white/20 dark:text-white dark:hover:bg-white/30"
-                  >
-                    Star on GitHub
-                  </Link>
-                </div> */}
               </div>
-              {/* <div className="mx-auto max-w-[500px] ">
-                <img className="object-fill h-45 w-50" src="images/Grid/04.jpg" alt="image" />
-              </div> */}
+            </div>
+            {/* Video */}
+            <div className="w-1/2 px-4">
+              <div
+                className="wow fadeInUp mx-auto max-w-[770px] overflow-hidden rounded-md"
+                data-wow-delay=".15s"
+              >
+                <div className="relative aspect-[77/40] items-center justify-center">
+                  <Image src="/images/video/video.jpg" alt="video image" fill />
+                  <div className="absolute top-0 right-0 flex h-full w-full items-center justify-center">
+                    <button
+                      onClick={() => setOpen(true)}
+                      className="flex h-[70px] w-[70px] items-center justify-center rounded-full bg-white bg-opacity-75 text-primary transition hover:bg-opacity-100"
+                    >
+                      <svg
+                        width="16"
+                        height="18"
+                        viewBox="0 0 16 18"
+                        className="fill-current"
+                      >
+                        <path d="M15.5 8.13397C16.1667 8.51888 16.1667 9.48112 15.5 9.86602L2 17.6603C1.33333 18.0452 0.499999 17.564 0.499999 16.7942L0.5 1.20577C0.5 0.43597 1.33333 -0.0451549 2 0.339745L15.5 8.13397Z" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -286,6 +304,15 @@ const Hero = () => {
             </defs>
           </svg>
         </div>
+        <ModalVideo
+          channel="youtube"
+          youtube={{
+            autoplay: 1,
+          }}
+          isOpen={isOpen}
+          videoId="L61p2uyiMSo"
+          onClose={() => setOpen(false)}
+        />
       </section>
     </>
   );
